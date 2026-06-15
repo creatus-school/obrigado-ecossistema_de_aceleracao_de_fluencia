@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const ytPlayer  = document.getElementById('ytPlayer');
 
   // Coloque aqui o mesmo ID que você usou no HTML
-  const videoId = 'NUXp1qCFliQ';
+  const videoId = 'wWm8D0UAboQ';
 
   if (playBtn && playerBox && ytPlayer) {
     playBtn.addEventListener('click', () => {
