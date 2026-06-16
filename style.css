@@ -273,7 +273,7 @@ body::before {
 /* ---- Mensagem ---- */
 
 .message-block {
-  width: 100%;
+  width: 70%;
   background: linear-gradient(135deg, rgba(74,0,128,0.18), rgba(26,0,48,0.55));
   border: 1px solid rgba(138,106,43,0.28);
   border-radius: 16px;
