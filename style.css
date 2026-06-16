@@ -39,7 +39,7 @@ body::before {
 .page-wrapper {
   position: relative;
   z-index: 1;
-  max-width: 870px;
+  max-width: 860px;
   margin: 0 auto;
   padding: 60px 24px 80px;
   display: flex;
