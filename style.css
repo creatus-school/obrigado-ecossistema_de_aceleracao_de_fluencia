@@ -39,7 +39,7 @@ body::before {
 .page-wrapper {
   position: relative;
   z-index: 1;
-  max-width: 860px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 60px 24px 80px;
   display: flex;
@@ -157,6 +157,75 @@ body::before {
   border-radius: 16px;
 }
 
+/* ---- Player YouTube com capa ---- */
+
+.video-cover-wrapper {
+  width: 100%;
+}
+
+.video-cover {
+  position: relative;
+  width: 100%;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  display: block;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(138,106,43,0.35),
+    0 8px 48px rgba(0,0,0,0.7),
+    0 0 80px rgba(74,0,128,0.35);
+}
+
+.video-thumb {
+  width: 100%;
+  display: block;
+  border-radius: 16px;
+}
+
+.play-icon {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 4rem;
+  color: #ffffff;
+  text-shadow: 0 6px 22px rgba(0,0,0,0.85);
+  background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) 100%);
+  transition: background 0.3s, font-size 0.2s;
+}
+
+.video-cover:hover .play-icon {
+  font-size: 4.6rem;
+  background: radial-gradient(circle, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.62) 100%);
+}
+
+.player-box {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(138,106,43,0.35),
+    0 8px 48px rgba(0,0,0,0.7),
+    0 0 80px rgba(74,0,128,0.35);
+}
+
+.player-box iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ---- Cards ---- */
+
 .highlights {
   width: 100%;
   display: grid;
@@ -201,6 +270,8 @@ body::before {
   opacity: 0.85;
 }
 
+/* ---- Mensagem ---- */
+
 .message-block {
   width: 100%;
   background: linear-gradient(135deg, rgba(74,0,128,0.18), rgba(26,0,48,0.55));
@@ -236,6 +307,8 @@ body::before {
   color: var(--gold-light);
   font-weight: 700;
 }
+
+/* ---- Passos ---- */
 
 .steps {
   width: 100%;
@@ -297,6 +370,8 @@ body::before {
   opacity: 0.85;
 }
 
+/* ---- CTA ---- */
+
 .cta-section {
   display: flex;
   flex-direction: column;
@@ -307,6 +382,7 @@ body::before {
 .btn-primary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   background: linear-gradient(135deg, var(--gold-main) 0%, var(--gold-shine) 50%, var(--gold-main) 100%);
   background-size: 200% auto;
@@ -350,6 +426,8 @@ body::before {
   line-height: 1.6;
 }
 
+/* ---- Rodapé ---- */
+
 .footer {
   text-align: center;
   display: flex;
@@ -372,6 +450,8 @@ body::before {
   font-style: italic;
 }
 
+/* ---- Animações ---- */
+
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(28px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -391,7 +471,7 @@ body::before {
 .anim:nth-child(7) { animation-delay: 1s; }
 .anim:nth-child(8) { animation-delay: 1.15s; }
 
-
+/* ---- Mobile ---- */
 
 @media (max-width: 600px) {
   .page-wrapper {
@@ -406,12 +486,11 @@ body::before {
   .highlights {
     grid-template-columns: 1fr;
   }
-}
 
+  /* Badge centralizado no mobile */
   .badge {
     width: 100%;
     justify-content: center;
-    align-items: center;
     text-align: center;
     padding: 12px 14px;
     gap: 8px;
@@ -423,82 +502,28 @@ body::before {
   .badge span:last-child {
     text-align: center;
   }
-}
 
+  /* Botão WhatsApp centralizado no mobile */
   .btn-primary {
     width: 100%;
-    justify-content: center;
     text-align: center;
     padding: 16px 20px;
-    line-height: 1.3;
     white-space: normal;
+    line-height: 1.4;
   }
 
   .btn-primary span {
     display: block;
     text-align: center;
   }
-}
 
-/* ---- Player YouTube com capa ---- */
+  /* Player não diminui no mobile */
+  .video-cover-wrapper {
+    width: 100%;
+  }
 
-.video-cover-wrapper {
-  width: 100%;
-  max-width: 900px;
-}
-
-.video-cover {
-  position: relative;
-  width: 100%;
-  border: 0;
-  padding: 0;
-  background: transparent;
-  cursor: pointer;
-  display: block;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow:
-    0 0 0 1px rgba(138,106,43,0.35),
-    0 8px 48px rgba(0,0,0,0.7),
-    0 0 80px rgba(74,0,128,0.35);
-}
-
-.video-thumb {
-  width: 100%;
-  display: block;
-  border-radius: 16px;
-}
-
-.play-icon {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  font-size: 3.5rem;
-  color: #ffffff;
-  text-shadow: 0 6px 22px rgba(0, 0, 0, 0.85);
-  background: radial-gradient(circle, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 100%);
-}
-
-.player-box {
-  margin-top: 16px;
-  aspect-ratio: 16 / 9;
-  width: 100%;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow:
-    0 0 0 1px rgba(138,106,43,0.35),
-    0 8px 48px rgba(0,0,0,0.7),
-    0 0 80px rgba(74,0,128,0.35);
-}
-
-.player-box iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
-/* classe utilitária */
-.hidden {
-  display: none;
+  .player-box {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
 }
