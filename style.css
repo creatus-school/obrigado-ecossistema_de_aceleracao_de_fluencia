@@ -1,189 +1,472 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>Obrigado - Ecossistema de Aceleração de Fluência</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="./favicon.ico">
+:root {
+  --purple-deep:   #0d0014;
+  --purple-dark:   #1a0030;
+  --purple-mid:    #2d0057;
+  --purple-accent: #4a0080;
+  --gold-light:    #b89a52;
+  --gold-main:     #8a6a2b;
+  --gold-dark:     #5f481c;
+  --gold-shine:    #cbb06a;
+  --white-soft:    #f0e6ff;
+}
 
-  <!-- Fontes -->
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+html, body {
+  min-height: 100vh;
+  background-color: var(--purple-deep);
+  font-family: 'Lato', sans-serif;
+  color: var(--gold-light);
+  overflow-x: hidden;
+}
 
-  <!-- CSS principal -->
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="page-wrapper">
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(74,0,128,0.45) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 80%, rgba(45,0,87,0.55) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 50%, rgba(26,0,48,0.8) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
 
-    <!-- Badge / topo -->
-    <div class="badge anim">
-      <span class="badge-icon">✦</span>
-      <span>Ecossistema de Aceleração de Fluência</span>
-      <span class="badge-icon">✦</span>
-    </div>
+.page-wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 60px 24px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
 
-    <div class="divider anim"></div>
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, rgba(138,106,43,0.18), rgba(138,106,43,0.06));
+  border: 1px solid rgba(138,106,43,0.45);
+  border-radius: 50px;
+  padding: 10px 24px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold-main);
+}
 
-    <!-- Hero -->
-    <section class="hero anim">
-      <p class="hero-tag">Ecossistema de Aceleração de Fluência</p>
-      <h1>Sua jornada rumo à fluência começa agora</h1>
-      <p>
-        <strong>Parabéns!</strong> Sua decisão de investir no seu desenvolvimento foi confirmada.
-        Você acaba de dar o passo mais importante: <strong>começar</strong>.
-      </p>
-    </section>
+.badge-icon { font-size: 1rem; }
 
-    <!-- Seção de vídeo -->
-    <section class="video-section anim">
-      <p class="video-label">✦ Assista ao vídeo de boas-vindas ✦</p>
+.divider {
+  width: 100%;
+  max-width: 500px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-main), transparent);
+  opacity: 0.45;
+}
 
-      <!-- Capa + botão de play -->
-      <div class="video-cover-wrapper">
-        <button id="playBtn" class="video-cover" aria-label="Assistir vídeo de boas-vindas">
-          <!-- Se quiser, troque essa imagem por uma sua -->
-          <img
-            src="https://img.youtube.com/vi/NUXp1qCFliQ/hqdefault.jpg"
-            alt="Capa do vídeo de boas-vindas"
-            class="video-thumb"
-          />
-          <span class="play-icon">▶</span>
-        </button>
+.hero {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
 
-        <!-- Player só aparece depois do clique -->
-        <div id="playerBox" class="player-box hidden">
-          <iframe
-            id="ytPlayer"
-            src=""
-            title="Vídeo de boas-vindas"
-            frameborder="0"
-            allow="autoplay; encrypted-media; picture-in-picture"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
-    </section>
+.hero-tag {
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  font-weight: 700;
+}
 
-    <!-- Cards de destaques -->
-    <section class="highlights anim">
-      <article class="card">
-        <div class="card-icon">⏱️</div>
-        <h3>Liberação personalizada</h3>
-        <p>
-          Cada acesso é preparado individualmente para garantir organização, segurança
-          e uma experiência impecável.
-        </p>
-      </article>
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  background: linear-gradient(135deg, var(--gold-shine) 0%, var(--gold-main) 55%, var(--gold-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
-      <article class="card">
-        <div class="card-icon">🧠</div>
-        <h3>Método eficaz</h3>
-        <p>
-          Você entrou em um sistema pensado para acelerar sua fluência com clareza,
-          consistência e direcionamento.
-        </p>
-      </article>
+.hero p {
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  font-weight: 300;
+  color: var(--white-soft);
+  line-height: 1.8;
+  max-width: 640px;
+  margin: 0 auto;
+}
 
-      <article class="card">
-        <div class="card-icon">💬</div>
-        <h3>Suporte completo</h3>
-        <p>
-          Nossa equipe está pronta para te acompanhar no processo de ativação
-          e nos primeiros passos da sua jornada.
-        </p>
-      </article>
-    </section>
+.hero p strong {
+  color: var(--gold-light);
+  font-weight: 700;
+}
 
-    <!-- Mensagem principal -->
-    <section class="message-block anim">
-      <h2>Uma mensagem especial para você</h2>
-      <p>
-        Você não adquiriu apenas um produto — você deu início a uma experiência
-        desenhada com cuidado, estratégia e propósito. Cada recurso do ecossistema
-        foi criado para te conduzir com consistência em direção à fluência real.
-      </p>
-      <p>
-        Agora, assista ao vídeo acima e acompanhe os próximos passos.
-        <strong>Seu acesso será liberado em até 12 horas após a confirmação da compra.</strong>
-      </p>
-    </section>
+.video-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
 
-    <!-- Passos -->
-    <section class="steps anim">
-      <h2 class="steps-title">✦ Seus próximos passos ✦</h2>
+.video-label {
+  font-size: 0.72rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  font-weight: 700;
+}
 
-      <div class="step-item">
-        <div class="step-number">1</div>
-        <div class="step-text">
-          <h4>Assista ao vídeo de boas-vindas</h4>
-          <p>
-            Ele traz orientações importantes sobre a sua jornada e como aproveitar
-            melhor o ecossistema.
-          </p>
-        </div>
-      </div>
+.video-wrapper {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(138,106,43,0.35);
+  box-shadow:
+    0 0 0 1px rgba(138,106,43,0.08),
+    0 8px 48px rgba(0,0,0,0.7),
+    0 0 80px rgba(74,0,128,0.35);
+  background: #0a0010;
+  position: relative;
+}
 
-      <div class="step-item">
-        <div class="step-number">2</div>
-        <div class="step-text">
-          <h4>Aguarde a liberação do seu acesso</h4>
-          <p>
-            Seu login será preparado manualmente e enviado em até 12 horas após
-            a confirmação do pagamento.
-          </p>
-        </div>
-      </div>
+.video-wrapper::before {
+  content: '';
+  display: block;
+  padding-top: 56.25%;
+}
 
-      <div class="step-item">
-        <div class="step-number">3</div>
-        <div class="step-text">
-          <h4>Verifique seu e-mail</h4>
-          <p>
-            Assim que seu acesso estiver pronto, você receberá todas as instruções
-            para ter acesso ao ecossistema completo.
-          </p>
-        </div>
-      </div>
+.video-wrapper video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
 
-      <div class="step-item">
-        <div class="step-number">4</div>
-        <div class="step-text">
-          <h4>Inicie sua jornada com tranquilidade</h4>
-          <p>
-            Quando você receber o acesso, siga as instruções para entrar no ecossistema
-            e dar início à aceleração da sua fluência.
-          </p>
-        </div>
-      </div>
-    </section>
+.highlights {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
 
-    <!-- CTA / WhatsApp -->
-    <section class="cta-section anim">
-      <a
-        href="https://wa.me/5511920898795?text=Ol%C3%A1!%20Acabei%20de%20adquirir%20o%20Ecossistema%20de%20Acelera%C3%A7%C3%A3o%20de%20Flu%C3%AAncia%20e%20tenho%20uma%20d%C3%BAvida."
-        class="btn-primary btn-whatsapp"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <span>Falar com o suporte no WhatsApp</span>
-      </a>
+.card {
+  background: linear-gradient(145deg, rgba(74,0,128,0.22), rgba(13,0,20,0.6));
+  border: 1px solid rgba(138,106,43,0.22);
+  border-radius: 14px;
+  padding: 28px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
 
-      <p class="cta-note">
-        Seu acesso será liberado em até 12 horas após a confirmação da compra.
-      </p>
-    </section>
+.card:hover {
+  border-color: rgba(138,106,43,0.55);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 30px rgba(138,106,43,0.08);
+}
 
-    <!-- Rodapé -->
-    <footer class="footer anim">
-      <p class="signature">Com gratidão e propósito,<br>Geovani Pires</p>
-      <p>© 2026 · Creatus Polyglot School · Todos os direitos reservados</p>
-    </footer>
-  </div>
+.card-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
 
-  <!-- JS -->
-  <script src="script.js"></script>
-</body>
-</html>
+.card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--gold-light);
+}
+
+.card p {
+  font-size: 0.88rem;
+  color: var(--white-soft);
+  line-height: 1.7;
+  font-weight: 300;
+  opacity: 0.85;
+}
+
+.message-block {
+  width: 100%;
+  background: linear-gradient(135deg, rgba(74,0,128,0.18), rgba(26,0,48,0.55));
+  border: 1px solid rgba(138,106,43,0.28);
+  border-radius: 16px;
+  padding: 40px 36px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.message-block h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--gold-shine), var(--gold-main));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.message-block p {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--white-soft);
+  font-weight: 300;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.message-block p strong {
+  color: var(--gold-light);
+  font-weight: 700;
+}
+
+.steps {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.steps-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  text-align: center;
+}
+
+.step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  background: rgba(74,0,128,0.14);
+  border: 1px solid rgba(138,106,43,0.18);
+  border-radius: 12px;
+  padding: 20px 22px;
+  transition: border-color 0.3s;
+}
+
+.step-item:hover {
+  border-color: rgba(138,106,43,0.42);
+}
+
+.step-number {
+  min-width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-main), var(--gold-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--purple-deep);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.step-text h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: var(--gold-light);
+  margin-bottom: 4px;
+}
+
+.step-text p {
+  font-size: 0.88rem;
+  color: var(--white-soft);
+  line-height: 1.65;
+  font-weight: 300;
+  opacity: 0.85;
+}
+
+.cta-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--gold-main) 0%, var(--gold-shine) 50%, var(--gold-main) 100%);
+  background-size: 200% auto;
+  color: var(--purple-deep);
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-decoration: none;
+  padding: 18px 42px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: background-position 0.4s, transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 30px rgba(138,106,43,0.35), 0 0 60px rgba(138,106,43,0.12);
+}
+
+.btn-primary:hover {
+  background-position: right center;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 40px rgba(138,106,43,0.5), 0 0 80px rgba(138,106,43,0.18);
+}
+
+.btn-whatsapp {
+  background: linear-gradient(135deg, #1a5c2a 0%, #25803d 50%, #1a5c2a 100%);
+  background-size: 200% auto;
+  box-shadow: 0 4px 30px rgba(37,128,61,0.4), 0 0 60px rgba(37,128,61,0.12);
+  color: #ffffff;
+}
+
+.btn-whatsapp:hover {
+  box-shadow: 0 8px 40px rgba(37,128,61,0.55), 0 0 80px rgba(37,128,61,0.2);
+}
+
+.cta-note {
+  font-size: 0.8rem;
+  color: var(--gold-dark);
+  letter-spacing: 0.8px;
+  opacity: 0.85;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.footer {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer p {
+  font-size: 0.8rem;
+  color: var(--gold-dark);
+  opacity: 0.7;
+  line-height: 1.6;
+}
+
+.footer .signature {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: var(--gold-main);
+  opacity: 1;
+  font-style: italic;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.anim {
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards;
+}
+
+.anim:nth-child(1) { animation-delay: 0.1s; }
+.anim:nth-child(2) { animation-delay: 0.25s; }
+.anim:nth-child(3) { animation-delay: 0.4s; }
+.anim:nth-child(4) { animation-delay: 0.55s; }
+.anim:nth-child(5) { animation-delay: 0.7s; }
+.anim:nth-child(6) { animation-delay: 0.85s; }
+.anim:nth-child(7) { animation-delay: 1s; }
+.anim:nth-child(8) { animation-delay: 1.15s; }
+
+
+
+@media (max-width: 600px) {
+  .page-wrapper {
+    padding: 40px 16px 60px;
+    gap: 36px;
+  }
+
+  .message-block {
+    padding: 28px 20px;
+  }
+
+  .highlights {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- Player YouTube com capa ---- */
+
+.video-cover-wrapper {
+  width: 100%;
+  max-width: 900px;
+}
+
+.video-cover {
+  position: relative;
+  width: 100%;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  display: block;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(138,106,43,0.35),
+    0 8px 48px rgba(0,0,0,0.7),
+    0 0 80px rgba(74,0,128,0.35);
+}
+
+.video-thumb {
+  width: 100%;
+  display: block;
+  border-radius: 16px;
+}
+
+.play-icon {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 3.5rem;
+  color: #ffffff;
+  text-shadow: 0 6px 22px rgba(0, 0, 0, 0.85);
+  background: radial-gradient(circle, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 100%);
+}
+
+.player-box {
+  margin-top: 16px;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(138,106,43,0.35),
+    0 8px 48px rgba(0,0,0,0.7),
+    0 0 80px rgba(74,0,128,0.35);
+}
+
+.player-box iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* classe utilitária */
+.hidden {
+  display: none;
+}
